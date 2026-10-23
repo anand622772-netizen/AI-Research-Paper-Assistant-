@@ -7,9 +7,15 @@ import os
 import json
 import io
 import shutil
+import sys
 from pathlib import Path
 import streamlit as st
 import pandas as pd
+
+# Ensure application root is in sys.path for cloud deployments (Streamlit Cloud, Render, etc.)
+APP_ROOT = Path(__file__).resolve().parent
+if str(APP_ROOT) not in sys.path:
+    sys.path.insert(0, str(APP_ROOT))
 
 # Internal modules
 from config import PROJECT_ROOT, DATA_DIR, OUTPUTS_DIR, SAMPLES_DIR, CONFERENCE_TEMPLATES
